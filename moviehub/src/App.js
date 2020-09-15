@@ -9,6 +9,8 @@ class App extends Component {
       <div className="App">
         <h1>Search</h1>
         <Search/>
+
+        
       </div>
     )
   }

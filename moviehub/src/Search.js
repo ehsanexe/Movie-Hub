@@ -23,7 +23,7 @@ class Search extends Component {
 
     HandleSubmit = (e) => {
         e.preventDefault();
-        const input = this.state.search;
+        
         axios.get(`http://www.omdbapi.com/?t=${this.state.search}&apikey=cb3a98a0`)
             .then(res => {
                 console.log(res);
@@ -47,11 +47,12 @@ class Search extends Component {
                 </form>
 
                 <div className="movie">
-                    <h1>{this.state.movieName}</h1>
+                    <h2>{this.state.movieName}</h2>
                     <img src={this.state.image} alt=" missing" />
                     <p>Rating:{this.state.rating}</p>
                     <p>Plot:{this.state.plot}</p>
                     <p>Genre:{this.state.genre}</p>
+                    
                 </div>
             </div>
         )
