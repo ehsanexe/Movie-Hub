@@ -8,7 +8,7 @@ class App extends Component {
     movieData: {}
   }
   
-  movieCard = (mData) => {
+  searchData = (mData) => {
     //let data = [...this.state.movieData,mData];
     this.setState({
       movieData: mData
@@ -21,7 +21,7 @@ class App extends Component {
     return(
       <div className="App">
         <h1>Search</h1>
-        <Search movieCard={this.movieCard}/>
+        <Search searchData={this.searchData}/>
         <MovieCard data={this.state.movieData}/>
         
       </div>
