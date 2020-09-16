@@ -12,8 +12,6 @@ class Search extends Component {
                 search: e.target.value 
             })
         
-        console.log(this.state.search)
-        
     }
 
     HandleSubmit = (e) => {
@@ -25,19 +23,16 @@ class Search extends Component {
                 this.setState({
                     movieData: res.data
                 })
-            })
+
+                console.log("Search:",this.state.movieData)
+                this.props.movieCard(this.state.movieData)
+            });
+   
     }
 
     render(){
 
-        const {
-            Title,
-            Released,
-            Genre,
-            Plot,
-            Poster,
-            imdbRating
-        } = this.state.movieData;
+        
 
         return(
             <div>
@@ -47,14 +42,7 @@ class Search extends Component {
                     <button type="submit">Submit</button>
                 </form>
 
-                <div className="movie">
-                    <h2>{Title}</h2>
-                    <img src={Poster} alt=" missing" />
-                    <p>Rating:{imdbRating}</p>
-                    <p>Plot:{Plot}</p>
-                    <p>Genre:{Genre}</p>
-                    
-                </div>
+                
             </div>
         )
     }
