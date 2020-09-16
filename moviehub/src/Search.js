@@ -45,7 +45,7 @@ class Search extends Component {
                 {   movieList.length > 0 ? (
                     movieList.map(movie => ( 
                     <div className="movieList" key={movie.imdbID}>
-                        <h4>{movie.Title}</h4>
+                        <h4 onClick={() => this.props.OnClickMovie(movie.imdbID)}>{movie.Title}</h4>
                         <p>{movie.Year}</p>
                         <img src={movie.Poster} alt=" missing" />
                     
