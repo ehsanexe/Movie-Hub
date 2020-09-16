@@ -21,6 +21,7 @@ const MovieCard = ({data}) =>{
         
         <div className="movie">
                     <h2>{Title}</h2>
+                    <p>{Released}</p>
                     <img src={Poster} alt=" missing" />
                     <p>Rating:{imdbRating}</p>
                     <p>Plot:{Plot}</p>
