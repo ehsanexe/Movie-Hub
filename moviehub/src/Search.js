@@ -4,12 +4,7 @@ import axios from 'axios'
 class Search extends Component {
 
     state = {
-        search:"",
-        movieName: "",
-        image:"",
-        rating: "",
-        plot:"",
-        genre:""
+        movieData: {}
     }
 
     HandleChange = (e) => {
@@ -28,16 +23,22 @@ class Search extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({
-                    movieName: res.data.Title,
-                    image:res.data.Poster,
-                    rating: res.data.imdbRating,
-                    plot: res.data.Plot,
-                    genre: res.data.Genre
+                    movieData: res.data
                 })
             })
     }
 
     render(){
+
+        const {
+            Title,
+            Released,
+            Genre,
+            Plot,
+            Poster,
+            imdbRating
+        } = this.state.movieData;
+
         return(
             <div>
                 <form onSubmit={this.HandleSubmit}>
@@ -47,11 +48,11 @@ class Search extends Component {
                 </form>
 
                 <div className="movie">
-                    <h2>{this.state.movieName}</h2>
-                    <img src={this.state.image} alt=" missing" />
-                    <p>Rating:{this.state.rating}</p>
-                    <p>Plot:{this.state.plot}</p>
-                    <p>Genre:{this.state.genre}</p>
+                    <h2>{Title}</h2>
+                    <img src={Poster} alt=" missing" />
+                    <p>Rating:{imdbRating}</p>
+                    <p>Plot:{Plot}</p>
+                    <p>Genre:{Genre}</p>
                     
                 </div>
             </div>
