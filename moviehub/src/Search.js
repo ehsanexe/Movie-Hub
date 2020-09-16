@@ -1,5 +1,6 @@
 import React , { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Search extends Component {
 
@@ -25,7 +26,8 @@ class Search extends Component {
                 })
 
                 console.log("Search:",this.state.movieData)
-                this.props.searchData(this.state.movieData)
+                //this.props.searchData(this.state.movieData)
+                
             });
    
     }
@@ -45,7 +47,9 @@ class Search extends Component {
                 {   movieList.length > 0 ? (
                     movieList.map(movie => ( 
                     <div className="movieList" key={movie.imdbID}>
-                        <h4 onClick={() => this.props.OnClickMovie(movie.imdbID)}>{movie.Title}</h4>
+                        <Link to={'/' + movie.imdbID}>
+                        <h4 >{movie.Title}</h4>
+                        </Link>
                         <p>{movie.Year}</p>
                         <img src={movie.Poster} alt=" missing" />
                     

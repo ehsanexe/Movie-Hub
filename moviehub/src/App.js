@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search'
 import MovieCard from './MovieCard'
+import { Route, BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
 class App extends Component {
@@ -22,23 +23,26 @@ class App extends Component {
   OnClickMovie = (id) => {
     console.log("id:",id)
     
-    axios.get(`http://www.omdbapi.com/?i=${id}&apikey=cb3a98a0`)
-            .then(res => {
-                console.log(res);
-                this.setState({
-                    movieCard: res.data
-                })
-              });
+    // axios.get(`http://www.omdbapi.com/?i=${id}&apikey=cb3a98a0`)
+    //         .then(res => {
+    //             console.log(res);
+    //             this.setState({
+    //                 movieCard: res.data
+    //             })
+    //           });
   }
 
   render () {
     return(
+      <BrowserRouter>
       <div className="App">
         <h1>Search</h1>
-        <Search searchData={this.searchData} OnClickMovie={this.OnClickMovie}/>
-        <MovieCard data={this.state.movieCard}/>
-        
+        {/* <Search searchData={this.searchData} OnClickMovie={this.OnClickMovie}/> */}
+        {/* <MovieCard data={this.state.movieCard}/> */}
+        <Route exact path='/' component={Search} />
+        <Route path='/:imdbID' component={MovieCard} />
       </div>
+      </BrowserRouter>
     )
   }
 }
