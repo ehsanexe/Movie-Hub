@@ -52,7 +52,7 @@ class Search extends Component {
                 {   movieList.length > 0 ? (
                     movieList.map(movie => ( 
                         
-                        <div className="col s3 " key={movie.imdbID}>
+                        <div className="col s6 m3 " key={movie.imdbID}>
                             <div className="card medium" >
                                 <div className="card-image">
                                     <img src={movie.Poster} alt="n/a" />
