@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search'
 import MovieCard from './MovieCard'
+import Navbar from './Navbar'
 import { Route, BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 
@@ -36,7 +37,7 @@ class App extends Component {
     return(
       <BrowserRouter>
       <div className="App">
-        <h1>Search</h1>
+        <Navbar/>
         {/* <Search searchData={this.searchData} OnClickMovie={this.OnClickMovie}/> */}
         {/* <MovieCard data={this.state.movieCard}/> */}
         <Route exact path='/' component={Search} />

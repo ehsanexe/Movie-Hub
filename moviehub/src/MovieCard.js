@@ -21,7 +21,7 @@ class MovieCard extends Component{
 
     render() {
         const movieCard = this.state.movieCard ? (
-                <div className="movie">
+                <div className="container">
                     <h2>{this.state.movieCard.Title}</h2>
                     <p>{this.state.movieCard.Released}</p>
                     <img src={this.state.movieCard.Poster} alt=" missing" />
