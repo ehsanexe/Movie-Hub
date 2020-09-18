@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 class Search extends Component {
 
     state = {
-        movieData: {}
+        movieData: {},
+        invalidSearch:null
     }
 
     HandleChange = (e) => {
@@ -22,7 +23,8 @@ class Search extends Component {
             .then(res => {
                 console.log(res);
                 this.setState({
-                    movieData: res.data.Search
+                    movieData: res.data.Search,
+                    invalidSearch: "Try different keywords"
                 })
 
                 console.log("Search:",this.state.movieData)
@@ -37,25 +39,38 @@ class Search extends Component {
         const movieList = this.state.movieData;
 
         return(
-            <div>
-                <form onSubmit={this.HandleSubmit}>
-                    <label htmlFor="search">Search:</label>
+            <div class="container">
+                <form  onSubmit={this.HandleSubmit}>
+                    <br></br>
+                    <label htmlFor="search">Search Movie:</label>
                     <input type="text" onChange={this.HandleChange} />
-                    <button type="submit">Submit</button>
+                    <button class="btn waves-effect waves-light" type="submit">
+                    <i class="material-icons right">search</i>Search</button>
                 </form>
 
+                <div class="row">    
                 {   movieList.length > 0 ? (
                     movieList.map(movie => ( 
-                    <div className="movieList" key={movie.imdbID}>
-                        <Link to={'/' + movie.imdbID}>
-                        <h4 >{movie.Title}</h4>
-                        </Link>
-                        <p>{movie.Year}</p>
-                        <img src={movie.Poster} alt=" missing" />
-                    
-                    </div>)) ): (<p>invalid search</p>)
+                        
+                        <div class="col s3 ">
+                            <div class="card medium" key={movie.imdbID}>
+                                <div class="card-image">
+                                    <img src={movie.Poster} alt=" missing" />
+                                </div>
+                                <div class="card-content">
+                                    <Link to={'/' + movie.imdbID}>
+                                    <p>{movie.Title}</p>
+                                    <p >{movie.Year}</p>
+                                    </Link>
+                                </div>
+                                </div>
+                            </div>
+                        
+                        )
+                    ) ): (<p>{this.state.invalidSearch}</p>)
                     
                 }
+                </div>
             </div>
         )
     }
