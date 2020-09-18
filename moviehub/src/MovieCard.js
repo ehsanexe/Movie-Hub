@@ -22,12 +22,29 @@ class MovieCard extends Component{
     render() {
         const movieCard = this.state.movieCard ? (
                 <div className="container">
-                    <h2>{this.state.movieCard.Title}</h2>
-                    <p>{this.state.movieCard.Released}</p>
-                    <img src={this.state.movieCard.Poster} alt=" missing" />
-                    <p>Rating:{this.state.movieCard.imdbRating}</p>
-                    <p>Plot:{this.state.movieCard.Plot}</p>
-                    <p>Genre:{this.state.movieCard.Genre}</p>
+                    <div className="col s12 m7"></div>
+                    <div className="header">
+                        <h2>{this.state.movieCard.Title}</h2>
+                        <p>{this.state.movieCard.Released}</p>
+                    </div>
+                    <div className="card horizontal">
+                        
+                        <img className="card-image" src={this.state.movieCard.Poster} alt=" missing" />
+                        <div className="card-content">
+                            <p>Rating: {this.state.movieCard.imdbRating}</p>
+                            <br></br>
+                            <p>Director: {this.state.movieCard.Director}</p>
+                            <p>Actors: {this.state.movieCard.Actors}</p>
+                            <p>Writer: {this.state.movieCard.Writer}</p>
+                            <p>Genre: {this.state.movieCard.Genre}</p>
+                            <br/>
+                            <p>Plot: {this.state.movieCard.Plot}</p>
+                            
+                        </div>
+                        
+                    </div>
+                    
+                    
                     
                 </div>
         ) : (
