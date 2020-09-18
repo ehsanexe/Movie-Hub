@@ -39,25 +39,25 @@ class Search extends Component {
         const movieList = this.state.movieData;
 
         return(
-            <div class="container">
+            <div className="container">
                 <form  onSubmit={this.HandleSubmit}>
                     <br></br>
                     <label htmlFor="search">Search Movies/TV Shows:</label>
                     <input type="text" onChange={this.HandleChange} />
-                    <button class="btn waves-effect waves-light" type="submit">
-                    <i class="material-icons right">search</i>Search</button>
+                    <button className="btn waves-effect waves-light" type="submit">
+                    <i className="material-icons right">search</i>Search</button>
                 </form>
 
-                <div class="row">    
+                <div className="row">    
                 {   movieList.length > 0 ? (
                     movieList.map(movie => ( 
                         
-                        <div class="col s3 ">
-                            <div class="card medium" key={movie.imdbID}>
-                                <div class="card-image">
+                        <div className="col s3 " key={movie.imdbID}>
+                            <div className="card medium" >
+                                <div className="card-image">
                                     <img src={movie.Poster} alt="n/a" />
                                 </div>
-                                <div class="card-content">
+                                <div className="card-content">
                                     <Link to={'/' + movie.imdbID}>
                                     <p>{movie.Title}</p>
                                     <p >{movie.Year}</p>

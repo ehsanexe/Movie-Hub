@@ -32,7 +32,7 @@ class MovieCard extends Component{
                         
                         <img className="card-image" src={this.state.movieCard.Poster} alt=" missing" />
                         <div className="card-content">
-                            <p>Rating: {this.state.movieCard.imdbRating} <i class="tiny material-icons">star</i></p>
+                            <p>Rating: {this.state.movieCard.imdbRating} <i className="tiny material-icons">star</i></p>
                             <br/>
                             <p>Director: {this.state.movieCard.Director}</p>
                             <p>Actors: {this.state.movieCard.Actors}</p>
