@@ -9,8 +9,9 @@ class MovieCard extends Component{
 
     componentDidMount(){
         let id = this.props.match.params.imdbID;
-        console.log("iimdbID:",id)
-        axios.get(`http://www.omdbapi.com/?i=${id}&apikey=cb3a98a0`)
+        console.log("imdbID:",id)
+        const API_KEY = process.env.REACT_APP_OMDB_API_KEY
+        axios.get(`http://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`)
             .then(res => {
                 console.log(res);
                 this.setState({

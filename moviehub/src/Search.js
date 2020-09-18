@@ -18,8 +18,8 @@ class Search extends Component {
 
     HandleSubmit = (e) => {
         e.preventDefault();
-        
-        axios.get(`http://www.omdbapi.com/?s=${this.state.search}&apikey=cb3a98a0`)
+        const API_KEY = process.env.REACT_APP_OMDB_API_KEY
+        axios.get(`http://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
             .then(res => {
                 console.log(res);
                 this.setState({
@@ -42,7 +42,7 @@ class Search extends Component {
             <div class="container">
                 <form  onSubmit={this.HandleSubmit}>
                     <br></br>
-                    <label htmlFor="search">Search Movie:</label>
+                    <label htmlFor="search">Search Movies/TV Shows:</label>
                     <input type="text" onChange={this.HandleChange} />
                     <button class="btn waves-effect waves-light" type="submit">
                     <i class="material-icons right">search</i>Search</button>
@@ -55,7 +55,7 @@ class Search extends Component {
                         <div class="col s3 ">
                             <div class="card medium" key={movie.imdbID}>
                                 <div class="card-image">
-                                    <img src={movie.Poster} alt=" missing" />
+                                    <img src={movie.Poster} alt="n/a" />
                                 </div>
                                 <div class="card-content">
                                     <Link to={'/' + movie.imdbID}>
