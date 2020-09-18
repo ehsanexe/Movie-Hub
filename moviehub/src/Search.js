@@ -19,7 +19,7 @@ class Search extends Component {
     HandleSubmit = (e) => {
         e.preventDefault();
         const API_KEY = process.env.REACT_APP_OMDB_API_KEY
-        axios.get(`http://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
+        axios.get(`https://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
             .then(res => {
                 console.log(res);
                 this.setState({
