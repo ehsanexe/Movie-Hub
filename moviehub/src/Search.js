@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom'
 class Search extends Component {
 
     state = {
-        movieData: {},
-        invalidSearch:null
+        movieData: []
     }
 
     HandleChange = (e) => {
@@ -21,13 +20,16 @@ class Search extends Component {
         const API_KEY = process.env.REACT_APP_OMDB_API_KEY
         axios.get(`https://www.omdbapi.com/?s=${this.state.search}&apikey=${API_KEY}`)
             .then(res => {
-                console.log(res);
-                this.setState({
-                    movieData: res.data.Search,
-                    invalidSearch: "Try different keywords"
-                })
+                //console.log(res);
 
-                console.log("Search:",this.state.movieData)
+                //console.log("Search:",this.state.movieData)
+
+                
+                    this.setState({
+                        movieData: res.data.Search,
+                    })
+                
+                //console.log("Search:",this.state.movieData)
                 //this.props.searchData(this.state.movieData)
                 
             });
@@ -49,7 +51,7 @@ class Search extends Component {
                 </form>
 
                 <div className="row">    
-                {   movieList.length > 0 ? (
+                {   movieList  ? (
                     movieList.map(movie => ( 
                         
                         <div className="col s6 m3 " key={movie.imdbID}>
@@ -67,7 +69,7 @@ class Search extends Component {
                             </div>
                         
                         )
-                    ) ): (<p>{this.state.invalidSearch}</p>)
+                    ) ): (<p>Try different keywords</p>)
                     
                 }
                 </div>
