@@ -4,6 +4,17 @@ import { Link } from 'react-router-dom'
 
 class Search extends Component {
 
+    componentDidMount(){
+        const API_KEY = process.env.REACT_APP_OMDB_API_KEY
+        axios.get(`https://www.omdbapi.com/?s=spider man&apikey=${API_KEY}`)
+            .then(res => {
+                
+                    this.setState({
+                        movieData: res.data.Search,
+                    })                
+            });
+    }
+
     state = {
         movieData: []
     }
@@ -45,7 +56,7 @@ class Search extends Component {
                 <form  onSubmit={this.HandleSubmit}>
                     <br></br>
                     <label htmlFor="search">Search Movies/TV Shows:</label>
-                    <input type="text" onChange={this.HandleChange} />
+                    <input type="text" placeholder="e.g. spider man" onChange={this.HandleChange} />
                     <button className="btn waves-effect waves-light" type="submit">
                     <i className="material-icons right">search</i>Search</button>
                 </form>
